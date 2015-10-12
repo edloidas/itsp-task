@@ -1,8 +1,8 @@
 ITS Partner Task
 =========
 
-[![Dependency Status](https://david-dm.org/edloidas/jetstream.svg)](https://david-dm.org/edloidas/jetstream)
-[![devDependency Status](https://david-dm.org/edloidas/jetstream/dev-status.svg)](https://david-dm.org/edloidas/jetstream#info=devDependencies)
+[![Dependency Status](https://david-dm.org/edloidas/itsp-task.svg)](https://david-dm.org/edloidas/itsp-task)
+[![devDependency Status](https://david-dm.org/edloidas/itsp-task/dev-status.svg)](https://david-dm.org/edloidas/itsp-task#info=devDependencies)
 
 > A test for the application for a job in ITS Partner.
 
