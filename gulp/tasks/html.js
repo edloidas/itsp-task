@@ -6,8 +6,8 @@ import gulpif      from 'gulp-if';
 import htmlmin     from 'gulp-htmlmin';
 import path        from 'path';
 
-let exclude = path.normalize( `!**/{${CONFIG.tasks.html.excludeFolders.join(',')}}/**` );
-let extensions = CONFIG.tasks.html.extensions.map( ( ext ) => path.join( CONFIG.root.src, CONFIG.tasks.html.src, `/**/*.${ext}` ) );
+const exclude = path.normalize( `!**/{${CONFIG.tasks.html.excludeFolders.join(',')}}/**` );
+const extensions = CONFIG.tasks.html.extensions.map( ( ext ) => path.join( CONFIG.root.src, CONFIG.tasks.html.src, `/**/*.${ext}` ) );
 extensions.push( exclude );
 
 let paths = {

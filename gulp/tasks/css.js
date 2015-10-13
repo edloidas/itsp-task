@@ -12,8 +12,11 @@ import csswring     from 'csswring';
 import comments     from 'postcss-discard-comments';
 import path         from 'path';
 
+const exclude = CONFIG.tasks.css.exclude.map( ( pattern ) => ( '!' + path.join( CONFIG.root.src, CONFIG.tasks.css.src, `/**/${pattern}` ) ) );
+const extensions = CONFIG.tasks.css.extensions.map( ( ext ) => path.join( CONFIG.root.src, CONFIG.tasks.css.src, `/**/*.${ext}` ) );
+
 let paths = {
-	src:  CONFIG.tasks.css.extensions.map( ( ext ) => path.join( CONFIG.root.src, CONFIG.tasks.css.src, `/**/*.${ext}` ) ),
+	src:  extensions.concat( exclude ),
 	dest: path.join( CONFIG.root.dest, CONFIG.tasks.css.dest )
 };
 

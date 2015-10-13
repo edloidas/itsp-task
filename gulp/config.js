@@ -20,7 +20,8 @@ const CONFIG = {
 			autoprefixer: {
 				browsers: [ 'last 3 version' ]
 			},
-			extensions: [ 'css' ]
+			extensions: [ 'css' ],
+			exclude: [ '_*.css' ]
 		},
 		html: {
 			src: 'html',
