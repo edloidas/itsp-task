@@ -15,8 +15,6 @@ let paths = {
 	dest: path.join( CONFIG.root.dest, CONFIG.tasks.html.dest ),
 };
 
-console.log(paths);
-
 gulp.task( 'html', () => {
 	return gulp.src( paths.src )
 		.pipe( gulpif( process.env.NODE_ENV === 'production', htmlmin( CONFIG.tasks.html.htmlmin ) ) )
