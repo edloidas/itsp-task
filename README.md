@@ -56,7 +56,7 @@ npm run gulp
 # Zip the public package content before the deployment to the IIS server
 npm run zip
 ```
-Read the [IIS Express](IISEXPRESS) for further details.
+Read the [IIS Express](IISEXPRESS.md) for further details.
 
 
 ## Licence ##
