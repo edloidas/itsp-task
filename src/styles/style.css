@@ -1,5 +1,127 @@
-@font-face {
-	font-family: 'Roboto';
+@import "_fonts.css";
 
-	src: url('Roboto-Regular.ttf')  format('truetype');
+@import "normalize.css/normalize";
+
+
+$font-size: 18px;
+
+$font-family:       'Roboto', Arial, sans-serif;
+$font-family-light: 'RobotoLight', Arial, sans-serif;
+
+$width: 1160px;
+
+$size-action-button: 56px;
+
+@define-mixin noOverflow {
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+@define-mixin shadowInset {
+	box-shadow: inset 0 0 3px 0 rgba(0,0,0,0.3),
+							inset 0 2px 5px 0 rgba(0,0,0,0.3);
+}
+
+@define-mixin shadowLow {
+	box-shadow: 0 0 3px 0 rgba(0,0,0,0.3),
+							0 2px 3px 0 rgba(0,0,0,0.5);
+}
+
+@define-mixin shadowMedium {
+	box-shadow: 0 0 10px 0 rgba(0,0,0,0.1),
+							0 5px 10px 0 rgba(0,0,0,0.3);
+}
+
+@define-mixin shadowHight {
+	box-shadow: 0 0px 10px 0 rgba(0,0,0,0.1),
+							0 5px 10px 0 rgba(0,0,0,0.3),
+							0 10px 20px 0 rgba(0,0,0,0.2);
+}
+
+/*
+Google Material Design color pallet
+
+Colors:
+	Primary - LightBlue: 100, 500, 700
+	Accent - Deep Orange: A400
+
+	BG - Grey: 200
+	Text (light) - White
+	Text (dark) - Black
+*/
+
+$color-primary1:   #B3E5FC;
+$color-primary2:   #03A9F4;
+$color-primary3:   #0288D1;
+$color-accent:     #FF3D00;
+
+$color-bg1:        #EEEEEE;
+$color-bg2:        #FFFFFF;
+
+$color-text-light: #FFFFFF;
+$color-text-dark:  #000000;
+
+html, body {
+	width: 100%;
+	height: 100%;
+
+	background: $color-bg1;
+
+	font-family: $font-family;
+	font-size: $font-size;
+	color: $color-text-dark;
+}
+
+.header {
+	height: 200px;
+	padding: 60px 50px 0px;
+
+	background: $color-primary2;
+
+	font-family: $font-family-light;
+	color: $color-text-light;
+
+	.header--text {
+		max-width: $width;
+		margin: 0 auto;
+
+		font-weight: normal;
+		font-size: 3rem;
+
+		@mixin noOverflow;
+	}
+}
+
+.content {
+	max-width: $width;
+	height: 300px;
+
+	margin: 0 auto 50px;
+
+	background: $color-bg2;
+
+	@mixin shadowMedium;
+}
+
+.floating-action-button {
+	position: fixed;
+
+	right: calc( $size-action-button / 2 );
+	bottom: calc( $size-action-button / 2 );
+
+	width: $size-action-button;
+	height: $size-action-button;
+
+	background: $color-accent url(../img/ic_event_white_24px.svg) center no-repeat;
+
+	border: none;
+	border-radius: calc( $size-action-button / 2 );
+
+	outline: none;
+
+	@mixin shadowMedium;
+
+	&:hover {
+		@mixin shadowHight;
+	}
 }

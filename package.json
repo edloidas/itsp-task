@@ -33,7 +33,8 @@
 	},
 	"dependencies": {
 		"react": "*",
-		"chart.js": "*"
+		"chart.js": "*",
+		"normalize.css": "*"
 	},
 	"devDependencies": {
 		"babel": "*",
@@ -60,7 +61,10 @@
 		"lodash": "*",
 		"gulp-postcss": "*",
 		"postcss-import": "*",
+		"postcss-mixins": "*",
+		"postcss-simple-vars": "*",
 		"postcss-nested": "*",
+		"postcss-calc": "*",
 		"autoprefixer": "*",
 		"css-mqpacker": "*",
 		"csswring": "*",
