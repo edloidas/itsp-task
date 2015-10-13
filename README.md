@@ -1,5 +1,5 @@
 ITS Partner Task
-=========
+================
 
 [![Dependency Status](https://david-dm.org/edloidas/itsp-task.svg)](https://david-dm.org/edloidas/itsp-task)
 [![devDependency Status](https://david-dm.org/edloidas/itsp-task/dev-status.svg)](https://david-dm.org/edloidas/itsp-task#info=devDependencies)
