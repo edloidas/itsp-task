@@ -33,8 +33,11 @@
 	},
 	"dependencies": {
 		"react": "*",
+		"react-dom": "*",
 		"flux": "*",
+		"keymirror": "*",
 		"object-assign": "*",
+		"moment": "*",
 		"chart.js": "*",
 		"normalize.css": "*"
 	},

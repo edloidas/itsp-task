@@ -13,8 +13,26 @@ $width: 1160px;
 $size-action-button: 56px;
 
 @define-mixin noOverflow {
-	white-space: nowrap;
 	overflow: hidden;
+
+	white-space: nowrap;
+}
+
+@define-mixin placeholder $color: $color-bg1, $opacity: 1.0 {
+	&::-webkit-input-placeholder {
+		color: $color;
+	}
+	&:-moz-placeholder {
+		opacity: $opacity;
+		color: $color;
+	}
+	&::-moz-placeholder {
+		opacity: $opacity;
+		color: $color;
+	}
+	&:-ms-input-placeholder {
+	 color: $color;
+	}
 }
 
 @define-mixin shadowInset {
@@ -65,59 +83,103 @@ html, body {
 	width: 100%;
 	height: 100%;
 
+	color: $color-text-dark;
 	background: $color-bg1;
 
 	font-family: $font-family;
 	font-size: $font-size;
-	color: $color-text-dark;
 }
 
 .header {
 	height: 200px;
 	padding: 60px 50px 0px;
 
+	color: $color-text-light;
 	background: $color-primary2;
 
 	font-family: $font-family-light;
-	color: $color-text-light;
 
 	.header--text {
 		max-width: $width;
 		margin: 0 auto;
 
-		font-weight: normal;
 		font-size: 3rem;
+		font-weight: normal;
 
 		@mixin noOverflow;
 	}
 }
 
 .content {
+	box-sizing: border-box;
 	max-width: $width;
 	height: 300px;
-
 	margin: 0 auto 50px;
+	padding: 10px 20px;
 
 	background: $color-bg2;
 
 	@mixin shadowMedium;
+
+	.date-input {
+		position: relative;
+
+		margin: 20px 0;
+
+		.date-input--input {
+			@mixin placeholder;
+
+			&:hover, &:focus, &:active {
+				color: $color-text-light;
+				background: $color-primary2;
+				@mixin placeholder;
+			}
+		}
+
+		.date-input--label {
+			position: absolute;
+			top: 0;
+			left: 0;
+
+			box-sizing: border-box;
+			height: 100%;
+			padding: 10px 0 0 10px;
+
+			line-height: 1rem;
+			line-height: 2rem;
+		}
+	}
+
+	.date-input .date-input--input, .select-input {
+		display: block;
+
+		box-sizing: border-box;
+		width: 300px;
+		min-width: 220px;
+		padding: 10px 20px 10px 70px;
+
+		color: $color-text-dark;
+		border: none;
+		border-radius: 2px;
+		background: $color-bg1;
+
+		font-size: 1.25rem;
+		line-height: 2rem;
+	}
 }
 
 .floating-action-button {
 	position: fixed;
-
 	right: calc( $size-action-button / 2 );
 	bottom: calc( $size-action-button / 2 );
 
 	width: $size-action-button;
 	height: $size-action-button;
 
-	background: $color-accent url(../img/ic_event_white_24px.svg) center no-repeat;
-
 	border: none;
 	border-radius: calc( $size-action-button / 2 );
-
 	outline: none;
+	background: $color-accent url(../img/ic_event_white_24px.svg) center no-repeat;
 
 	@mixin shadowMedium;
 
