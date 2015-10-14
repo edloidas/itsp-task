@@ -10,6 +10,7 @@ class DateInput extends React.Component {
 		id: ReactPropTypes.string,
 		placeholder: ReactPropTypes.string,
 		value: ReactPropTypes.string,
+		// onSave: ReactPropTypes.func.isRequired,
 	}
 
 	constructor( props ) {

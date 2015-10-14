@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 function CurrencyRange() {
 	this.firstDate = new Date();
 	this.lastDate = new Date();
@@ -73,8 +75,23 @@ function CurrencyRange() {
 		return this.isPoint() || this.isRange();
 	};
 
+	this.getFirstDate = () => {
+		return moment(this.firstDate).format('YYYY-MM-DD');
+	};
+
+	this.getLastDate = () => {
+		return moment(this.lastDate).format('YYYY-MM-DD');
+	};
+
 	this.getSelected = () => {
 		return this.selected;
+	};
+
+	this.setSelected = ( value ) => {
+		const contains = this.currencyList.find( ( currency ) => { return value === currency; } );
+		if ( contains ) {
+			this.selected = value;
+		}
 	};
 
 	this.getCurrencyList = () => {

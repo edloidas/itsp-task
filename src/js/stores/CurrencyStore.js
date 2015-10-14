@@ -1,6 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import Events from 'events';
-import moment from 'moment';
 import AppConstants from '../constants/AppConstants';
 import CurrencyRange from '../currency/CurrencyRange';
 // import assign from 'object-assign';
@@ -11,20 +10,8 @@ const CHANGE_EVENT = 'change';
 
 class CurrencyStoreEvents extends EventEmitter {
 
-	getFirstDate() {
-		return moment(CurrencyRange.firstDate).format('YYYY-MM-DD');
-	}
-
-	getLastDate() {
-		return moment(CurrencyRange.lastDate).format('YYYY-MM-DD');
-	}
-
-	getSelected() {
-		return CurrencyRange.getSelected();
-	}
-
-	getCurrencyList() {
-		return CurrencyRange.getCurrencyList();
+	getCurrency() {
+		return CurrencyRange;
 	}
 
 	emitChange() {
@@ -45,8 +32,13 @@ const CurrencyStore = new CurrencyStoreEvents();
 
 AppDispatcher.register( ( action ) => {
 	let date;
-
+	console.log(JSON.stringify(CurrencyRange));
 	switch ( action.actionType ) {
+	case AppConstants.UPDATE_SELECTED:
+		CurrencyRange.setSelected( action.selected );
+		CurrencyStore.emitChange();
+		break;
+
 	case AppConstants.UPDATE:
 		date = action.date.trim();
 		if ( date !== '' ) {
@@ -66,6 +58,7 @@ AppDispatcher.register( ( action ) => {
 
 	default:
 	}
+	console.log(JSON.stringify(CurrencyRange));
 });
 
 export default CurrencyStore;

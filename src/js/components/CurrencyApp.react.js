@@ -8,17 +8,13 @@ import FloatingActiveButton from './FloatingActiveButton.react';
  * Retrieve the current data from the CurrencyStore
  */
 function getCurrencyState() {
-	return {
-		firstDate: CurrencyStore.getFirstDate(),
-		lastDate: CurrencyStore.getLastDate(),
-		selected: CurrencyStore.getSelected(),
-		currencyList: CurrencyStore.getCurrencyList(),
-	};
+	return CurrencyStore.getCurrency();
 }
 
 class CurrencyApp extends React.Component {
 	constructor( props ) {
 		super( props );
+		this._onChange = this._onChange.bind(this);
 	}
 
 	state = getCurrencyState();
@@ -27,16 +23,12 @@ class CurrencyApp extends React.Component {
 		CurrencyStore.addChangeListener( this._onChange );
 	}
 
-	componentWillUpdate( nextProps, nextState ) {
-		console.log( nextProps, nextState );
-	}
-
 	componentWillUnmount() {
 		CurrencyStore.removeChangeListener( this._onChange );
 	}
 
 	_onChange() {
-		this.state = getCurrencyState();
+		this.setState( getCurrencyState() );
 	}
 
 	render() {
@@ -48,7 +40,7 @@ class CurrencyApp extends React.Component {
 					labelClassName = "date-input--label"
 					labelText = "From:"
 					id = "firstDate"
-					value = { this.state.firstDate }
+					value = { this.state.getFirstDate() }
 				/>
 				<DateInput
 					className = "date-input date-input__last"
@@ -56,13 +48,13 @@ class CurrencyApp extends React.Component {
 					labelClassName = "date-input--label"
 					labelText = "To:"
 					id = "lastDate"
-					value = { this.state.lastDate }
+					value = { this.state.getLastDate() }
 				/>
 				<SelectInput
 					className = "select-input"
 					id = "currencyTypes"
-					value = { this.state.selected }
-					options = { this.state.currencyList }
+					value = { this.state.getSelected() }
+					options = { this.state.getCurrencyList() }
 				/>
 				<FloatingActiveButton className = "floating-action-button"/>
 			</div>

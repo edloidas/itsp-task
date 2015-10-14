@@ -1,33 +1,40 @@
 import React from 'react';
 const ReactPropTypes = React.PropTypes;
+import AppActions from '../actions/AppActions';
 
 class SelectInput extends React.Component {
 	static propTypes = {
 		className: ReactPropTypes.string,
 		id: ReactPropTypes.string,
-		value: ReactPropTypes.string,
-		options: ReactPropTypes.array,
+		value: ReactPropTypes.string.isRequired,
+		options: ReactPropTypes.array.isRequired,
 	}
 
 	constructor( props ) {
 		super( props );
-		this._onChange = this._onChange.bind(this);
+		this._save = this._save.bind( this );
+		this._onChange = this._onChange.bind( this );
 	}
 
 	state = {
 		value: this.props.value || '',
 	}
 
+	_save( value ) {
+		AppActions.updateSelected( value );
+	}
+
 	_onChange( event ) {
 		this.setState({
 			value: event.target.value,
 		});
+		this._save( event.target.value );
 	}
 
 	render() {
-		const options = this.props.options.map( ( value ) => {
-			return ( <option value = {value} key = {value}>{ value }</option> );
-		});
+		const optionsMap = ( value, index ) => {
+			return ( <option value = {value} key = {index}>{ value }</option> );
+		};
 
 		return (
 			<select
@@ -37,7 +44,7 @@ class SelectInput extends React.Component {
 				value = { this.state.value }
 				autoFocus
 			>
-				{ options }
+				{ this.props.options.map( optionsMap ) }
 			</select>
 		);
 	}
