@@ -38,6 +38,14 @@ Create a single page application with React, that allows the user to select the 
 
 ## Install ##
 
+Before building the project, you must install [Node.js](https://nodejs.org/en/) with npm. Please, install them first.
+To simplify project build or run, install gulp globally:
+```bash
+npm install -g gulp
+```
+
+After preparations are completed, proceed with the following steps:
+
 ```bash
 # Step 1: Clone the itsp-task repository
 git clone https://github.com/edloidas/itsp-task.git
