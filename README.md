@@ -48,13 +48,13 @@ npm install
 # Step 4: Run production build
 npm run production
 ```
-Instead of the `npm run production` you can run development build, that will also some developer tools and will not do optimizations to the code:
+Instead of the `npm run production` you can run development build, that will also some developer tools (sourcemaps and BrowserSync) and will not do optimizations to the code or code cleaning:
 
 ```bash
 # Development build can be run like this
-npm run development
-# ... or this
 npm run gulp
+# ... or this (without BrowserSync)
+npm run development
 ```
 
 ## IIS Express: Deploy and Run ##
