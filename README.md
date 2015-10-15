@@ -33,13 +33,13 @@ Create a single page application with React, that allows the user to select the 
 ## Features ##
 
 * As you can see, React components uses the `class`. Other entities uses plain old `function` and composition. Classes are not good, but since we are using Babel and React, we should write it that way.
-* We made jQuery work with YQL for all cross-domain GET requests.
+* jQuery and YQL are used for all cross-domain GET requests.
 
 
 ## Install ##
 
-Before building the project, you must install [Node.js](https://nodejs.org/en/) with npm. Please, install them first.
-To simplify project build or run, install gulp globally:
+Before building the project, you must install [Node.js](https://nodejs.org/en/) with npm first.
+You may also want to simplify project build or run, so just install gulp globally:
 ```bash
 npm install -g gulp
 ```
@@ -56,7 +56,7 @@ npm install
 # Step 4: Run production build
 npm run production
 ```
-Instead of the `npm run production` you can run development build, that will also some developer tools (sourcemaps and BrowserSync) and will not do optimizations to the code or code cleaning:
+Instead of the `npm run production` you can run development build, which will also give you some developer tools (sourcemaps and BrowserSync) and will not do optimizations to the code:
 
 ```bash
 # Development build can be run like this

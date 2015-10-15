@@ -143,8 +143,11 @@ function CurrencyRange() {
 		return deferred.promise;
 	};
 
-	this.delayedLoadData
-		= lodash.debounce( this._loadData.bind( this ), this.delay, { leading: true } );
+	this.delayedLoadData = lodash.debounce(
+		this._loadData.bind( this ),
+		this.delay,
+		{ leading: true },
+	);
 }
 
 export default new CurrencyRange();
