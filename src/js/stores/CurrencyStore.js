@@ -1,14 +1,19 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
 import Events from 'events';
+const EventEmitter = Events.EventEmitter;
 import AppConstants from '../constants/AppConstants';
 import CurrencyRange from '../currency/CurrencyRange';
-// import assign from 'object-assign';
-
-const EventEmitter = Events.EventEmitter;
+import lodash from 'lodash';
 
 const CHANGE_EVENT = 'change';
 
 class CurrencyStoreEvents extends EventEmitter {
+
+	constructor( props ) {
+		super( props );
+		this.emitDelayedChange =
+			lodash.debounce( this.emitChange.bind( this ), 1000, { leading: true } );
+	}
 
 	getCurrency() {
 		return CurrencyRange;
@@ -17,6 +22,8 @@ class CurrencyStoreEvents extends EventEmitter {
 	emitChange() {
 		this.emit( CHANGE_EVENT );
 	}
+
+	// emitDelayedChange() { ... }
 
 	addChangeListener( callback ) {
 		this.on( CHANGE_EVENT, callback );
@@ -31,34 +38,31 @@ const CurrencyStore = new CurrencyStoreEvents();
 
 
 AppDispatcher.register( ( action ) => {
-	let date;
-	console.log(JSON.stringify(CurrencyRange));
 	switch ( action.actionType ) {
 	case AppConstants.UPDATE_SELECTED:
 		CurrencyRange.setSelected( action.selected );
-		CurrencyStore.emitChange();
+		CurrencyRange._loadData().then( () => {
+			CurrencyStore.emitDelayedChange();
+		});
 		break;
 
 	case AppConstants.UPDATE:
-		date = action.date.trim();
-		if ( date !== '' ) {
-			if ( action.isFirst ) {
-				CurrencyRange.parseFirstDate( date );
-			} else {
-				CurrencyRange.parseLastDate( date );
-			}
-			CurrencyStore.emitChange();
+		const date = CurrencyRange.parseCustomDate( action.date, action.isFirst );
+		if ( date ) {
+			CurrencyRange._loadData().then( () => {
+				CurrencyStore.emitDelayedChange();
+			});
 		}
 		break;
 
-	case AppConstants.RESET:
-		CurrencyRange.reset();
-		CurrencyStore.emitChange();
+	case AppConstants.REFRESH:
+		CurrencyRange._loadData().then( () => {
+			CurrencyStore.emitDelayedChange();
+		});
 		break;
 
 	default:
 	}
-	console.log(JSON.stringify(CurrencyRange));
 });
 
 export default CurrencyStore;

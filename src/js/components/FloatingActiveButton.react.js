@@ -7,6 +7,7 @@ class FloatingActiveButton extends React.Component {
 		className: ReactPropTypes.string,
 		id: ReactPropTypes.string,
 		value: ReactPropTypes.string,
+		title: ReactPropTypes.string,
 	}
 
 	constructor( props ) {
@@ -14,14 +15,15 @@ class FloatingActiveButton extends React.Component {
 	}
 
 	_onClick() {
-		AppActions.reset();
+		AppActions.refresh();
 	}
 
 	render() {
 		return (
 			<button
-				className="floating-action-button"
+				className = { this.props.className }
 				onClick = { this._onClick }
+				title = { this.props.title }
 			></button>
 		);
 	}

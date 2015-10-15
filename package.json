@@ -39,6 +39,10 @@
 		"object-assign": "*",
 		"moment": "*",
 		"chart.js": "*",
+		"es6-promise": "*",
+		"lodash": "*",
+		"jquery": "*",
+		"xml2js": "*",
 		"normalize.css": "*"
 	},
 	"devDependencies": {
@@ -63,7 +67,6 @@
 		"webpack": "*",
 		"babel-loader": "*",
 		"browser-sync": "*",
-		"lodash": "*",
 		"gulp-postcss": "*",
 		"postcss-import": "*",
 		"postcss-mixins": "*",

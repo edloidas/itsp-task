@@ -10,19 +10,23 @@ class DateInput extends React.Component {
 		id: ReactPropTypes.string,
 		placeholder: ReactPropTypes.string,
 		value: ReactPropTypes.string,
-		// onSave: ReactPropTypes.func.isRequired,
+		onSave: ReactPropTypes.func.isRequired,
 	}
 
 	constructor( props ) {
 		super( props );
-		this._onChange = this._onChange.bind(this);
 		this.insertSeparator = this.insertSeparator.bind(this);
 		this.formatValue = this.formatValue.bind(this);
+		this._onChange = this._onChange.bind(this);
+		this._save = this._save.bind(this);
 	}
 
 
 	state = {
 		value: this.props.value || '',
+	}
+
+	componentDidUpdate() {
 	}
 
 	insertSeparator( value, position ) {
@@ -40,9 +44,17 @@ class DateInput extends React.Component {
 	}
 
 	_onChange( event ) {
+		const formattedValue = this.formatValue( event.target.value );
 		this.setState({
-			value: this.formatValue( event.target.value ),
+			value: formattedValue,
 		});
+		this._save( formattedValue );
+	}
+
+	_save( value ) {
+		if ( value.length === 10 ) {
+			this.props.onSave( value );
+		}
 	}
 
 	render() {

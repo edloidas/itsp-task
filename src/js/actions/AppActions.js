@@ -2,23 +2,22 @@ import AppDispatcher from '../dispatcher/AppDispatcher';
 import AppConstants from '../constants/AppConstants';
 
 const AppActions = {
-
 	updateSelected: ( selected ) => {
 		AppDispatcher.dispatch({
 			actionType: AppConstants.UPDATE_SELECTED,
 			selected: selected,
 		});
 	},
-	update: ( date, isFirst ) => {
+	update: ( isFirst, date ) => {
 		AppDispatcher.dispatch({
 			actionType: AppConstants.UPDATE,
 			date: date,
 			isFirst: isFirst,
 		});
 	},
-	reset: () => {
+	refresh: () => {
 		AppDispatcher.dispatch({
-			actionType: AppConstants.RESET,
+			actionType: AppConstants.REFRESH,
 		});
 	},
 };

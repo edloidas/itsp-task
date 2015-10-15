@@ -1,6 +1,5 @@
 import React from 'react';
 const ReactPropTypes = React.PropTypes;
-import AppActions from '../actions/AppActions';
 
 class SelectInput extends React.Component {
 	static propTypes = {
@@ -8,6 +7,7 @@ class SelectInput extends React.Component {
 		id: ReactPropTypes.string,
 		value: ReactPropTypes.string.isRequired,
 		options: ReactPropTypes.array.isRequired,
+		onSave: ReactPropTypes.func.isRequired,
 	}
 
 	constructor( props ) {
@@ -21,7 +21,7 @@ class SelectInput extends React.Component {
 	}
 
 	_save( value ) {
-		AppActions.updateSelected( value );
+		this.props.onSave( value );
 	}
 
 	_onChange( event ) {
@@ -32,8 +32,8 @@ class SelectInput extends React.Component {
 	}
 
 	render() {
-		const optionsMap = ( value, index ) => {
-			return ( <option value = {value} key = {index}>{ value }</option> );
+		const optionsMap = ( value ) => {
+			return ( <option value = { value.name } key = { value.id }>{ value.name }</option> );
 		};
 
 		return (

@@ -8,7 +8,7 @@ $font-size: 18px;
 $font-family:       'Roboto', Arial, sans-serif;
 $font-family-light: 'RobotoLight', Arial, sans-serif;
 
-$width: 1160px;
+$width: 900px;
 
 $size-action-button: 56px;
 
@@ -113,13 +113,19 @@ html, body {
 .content {
 	box-sizing: border-box;
 	max-width: $width;
-	height: 300px;
+	min-height: 300px;
 	margin: 0 auto 50px;
-	padding: 10px 20px;
+	padding: 10px 20px 30px 20px;
 
 	background: $color-bg2;
 
 	@mixin shadowMedium;
+
+	@mixin noOverflow;
+
+	.graph {
+		margin-bottom: 50px;
+	}
 
 	.date-input {
 		position: relative;
@@ -179,7 +185,7 @@ html, body {
 	border: none;
 	border-radius: calc( $size-action-button / 2 );
 	outline: none;
-	background: $color-accent url(../img/ic_event_white_24px.svg) center no-repeat;
+	background: $color-accent url(../img/ic_replay_white_24px.svg) center no-repeat;
 
 	@mixin shadowMedium;
 
