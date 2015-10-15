@@ -39,7 +39,7 @@
 		"object-assign": "*",
 		"moment": "*",
 		"chart.js": "*",
-		"es6-promise": "*",
+		"q": "*",
 		"lodash": "*",
 		"jquery": "*",
 		"xml2js": "*",

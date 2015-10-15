@@ -1,5 +1,5 @@
 import moment from 'moment';
-// import Promise from 'es6-promise';
+import Q from 'q';
 import lodash from 'lodash';
 import jQuery from 'jquery';
 import XmlParser from 'xml2js';
@@ -111,33 +111,36 @@ function CurrencyRange() {
 	};
 
 	this._loadData = () => {
-		return new Promise( ( resolve, reject ) => {
-			const url = `http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22${encodeURIComponent(this._getUrl())}%22&format=xml'&callback=?`;
+		// Not good enough support in old browsers for:
+		// return new Promise( ( resolve, reject )
+		const deferred = Q.defer();
+		const url = `http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22${encodeURIComponent(this._getUrl())}%22&format=xml'&callback=?`;
 
-			jQuery.getJSON(url, ( data ) => {
-				if (data.results[0]) {
-					let xml = data.results[0];
+		jQuery.getJSON(url, ( data ) => {
+			if (data.results[0]) {
+				let xml = data.results[0];
 
-					xml = xml.replace(/<body>/g, '');
-					xml = xml.replace(/<\/body>/g, '');
-					xml = xml.replace(/&#xd;/g, '');
-					xml = xml.trim();
+				xml = xml.replace(/<body>/g, '');
+				xml = xml.replace(/<\/body>/g, '');
+				xml = xml.replace(/&#xd;/g, '');
+				xml = xml.trim();
 
-					XmlParser.parseString( xml, ( err, result ) => {
-						if ( result && result.currency && result.currency.length !== 0) {
-							this.graphData.labels = result.currency.record.map( value => { return moment( new Date( value.$.date ) ).format( 'YYYY-MM-DD' ); } );
-							this.graphData.rates = result.currency.record.map( value => { return value.rate[0]; } );
-						}
+				XmlParser.parseString( xml, ( err, result ) => {
+					if ( result && result.currency && result.currency.length !== 0) {
+						this.graphData.labels = result.currency.record.map( value => { return moment( new Date( value.$.date ) ).format( 'YYYY-MM-DD' ); } );
+						this.graphData.rates = result.currency.record.map( value => { return value.rate[0]; } );
+					}
 
-						resolve( this.graphData );
-					});
-				} else {
-					reject( Error( 'Data load failed' ) );
-				}
-			}).fail( () => {
-				reject( Error( 'Data load failed' ) );
-			});
+					deferred.resolve( this.graphData );
+				});
+			} else {
+				deferred.reject( Error( 'Data load failed' ) );
+			}
+		}).fail( () => {
+			deferred.reject( Error( 'Data load failed' ) );
 		});
+
+		return deferred.promise;
 	};
 
 	this.delayedLoadData
