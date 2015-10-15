@@ -30,7 +30,7 @@ Create a single page application with React, that allows the user to select the 
 * lodash (debounce)
 * xml2js
 
-## Аeatures ##
+## Features ##
 
 * As you can see, React components uses the `class`. Other entities uses plain old `function` and composition. Classes are not good, but since we are using Babel and React, we should write it that way.
 * We made jQuery work with YQL for all cross-domain GET requests.
