@@ -8,7 +8,7 @@ ITS Partner Task
 
 Create a single page application with React, that allows the user to select the time interval and see a graph of the specified currency.
 
-##### You should use #####
+##### Task #####
 
 * React
 * ~~[MTBank web service](http://www.mtbank.by/private/currency)~~ (changed to NBRB);
@@ -27,6 +27,13 @@ Create a single page application with React, that allows the user to select the 
 	- BrowserSync
 * React
 * Chart.js
+* lodash (debounce)
+* xml2js
+
+## Аeatures ##
+
+* As you can see, React components uses the `class`. Other entities uses plain old `function` and composition. Classes are not good, but since we are using Babel and React, we should write it that way.
+* We made jQuery work with YQL for all cross-domain GET requests.
 
 
 ## Install ##
@@ -52,10 +59,6 @@ npm run gulp
 
 ## IIS Express: Deploy and Run ##
 
-```bash
-# Zip the public package content before the deployment to the IIS server
-npm run zip
-```
 Read the [IIS Express](IISEXPRESS.md) for further details.
 
 
