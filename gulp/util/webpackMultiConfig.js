@@ -1,7 +1,7 @@
-import CONFIG          from '../config';
+import CONFIG from '../config';
 
-import path            from 'path';
-import webpack         from 'webpack';
+import path from 'path';
+import webpack from 'webpack';
 import webpackManifest from './webpackManifest';
 
 export default ( env ) => {
@@ -63,8 +63,8 @@ export default ( env ) => {
 			// new webpackManifest( publicPath, CONFIG.root.dest ),
 			new webpack.DefinePlugin({
 				'process.env': {
-					'NODE_ENV': JSON.stringify( 'production' )
-				}
+					'NODE_ENV': JSON.stringify( 'production' ),
+				},
 			}),
 			new webpack.optimize.DedupePlugin(),
 			new webpack.optimize.UglifyJsPlugin(),
