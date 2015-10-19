@@ -1,16 +1,15 @@
-import React from 'react';
-const ReactPropTypes = React.PropTypes;
+import React, { PropTypes } from 'react';
 
 class DateInput extends React.Component {
 	static propTypes = {
-		className: ReactPropTypes.string,
-		labelClassName: ReactPropTypes.string,
-		inputClassName: ReactPropTypes.string,
-		labelText: ReactPropTypes.string,
-		id: ReactPropTypes.string,
-		placeholder: ReactPropTypes.string,
-		value: ReactPropTypes.string,
-		onSave: ReactPropTypes.func.isRequired,
+		className: PropTypes.string,
+		labelClassName: PropTypes.string,
+		inputClassName: PropTypes.string,
+		labelText: PropTypes.string,
+		id: PropTypes.string,
+		placeholder: PropTypes.string,
+		value: PropTypes.string,
+		onSave: PropTypes.func.isRequired,
 	}
 
 	constructor( props ) {

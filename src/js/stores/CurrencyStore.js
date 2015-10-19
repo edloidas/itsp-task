@@ -1,6 +1,5 @@
 import AppDispatcher from '../dispatcher/AppDispatcher';
-import Events from 'events';
-const EventEmitter = Events.EventEmitter;
+import { EventEmitter } from 'events';
 import AppConstants from '../constants/AppConstants';
 import CurrencyRange from '../currency/CurrencyRange';
 import lodash from 'lodash';

@@ -1,17 +1,16 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-const ReactPropTypes = React.PropTypes;
 import Chart from 'chart.js';
 
 class Graph extends React.Component {
 	static propTypes = {
-		className: ReactPropTypes.string,
-		id: ReactPropTypes.string,
+		className: PropTypes.string,
+		id: PropTypes.string,
 		width: React.PropTypes.number.isRequired,
 		height: React.PropTypes.number.isRequired,
-		data: ReactPropTypes.object.isRequired,
-		label: ReactPropTypes.string.isRequired,
-		options: ReactPropTypes.object,
+		data: PropTypes.object.isRequired,
+		label: PropTypes.string.isRequired,
+		options: PropTypes.object,
 	}
 
 	constructor( props ) {
@@ -48,7 +47,7 @@ class Graph extends React.Component {
 				},
 			],
 		};
-		this.chart = new Chart( context ).Line( data, this.props.options );
+		this.chart = new Chart( context ).Bar( data, this.props.options );
 	}
 
 	render() {

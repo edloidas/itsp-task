@@ -52,6 +52,7 @@ class CurrencyApp extends React.Component {
 					height = {300}
 					label = { this.state.selected }
 					data = { this.state.graphData }
+					options = { { scaleBeginAtZero: false } }
 				/>
 				<SelectInput
 					className = "select-input"
