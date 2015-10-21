@@ -63,8 +63,8 @@ class CurrencyApp extends React.Component {
 				/>
 				<DateInput
 					className = "date-input date-input__first"
-					inputClassName = "date-input--input"
-					labelClassName = "date-input--label"
+					inputClassName = "date-input__input"
+					labelClassName = "date-input__label"
 					labelText = "From:"
 					id = "firstDate"
 					value = { this.state.getFirstDate() }
@@ -72,8 +72,8 @@ class CurrencyApp extends React.Component {
 				/>
 				<DateInput
 					className = "date-input date-input__last"
-					inputClassName = "date-input--input"
-					labelClassName = "date-input--label"
+					inputClassName = "date-input__input"
+					labelClassName = "date-input__label"
 					labelText = "To:"
 					id = "lastDate"
 					value = { this.state.getLastDate() }

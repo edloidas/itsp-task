@@ -99,7 +99,7 @@ html, body {
 
 	font-family: $font-family-light;
 
-	.header--text {
+	.header__text {
 		max-width: $width;
 		margin: 0 auto;
 
@@ -132,7 +132,7 @@ html, body {
 
 		margin: 20px 0;
 
-		.date-input--input {
+		.date-input__input {
 			@mixin placeholder;
 
 			&:hover, &:focus, &:active {
@@ -142,7 +142,7 @@ html, body {
 			}
 		}
 
-		.date-input--label {
+		.date-input__label {
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -156,7 +156,7 @@ html, body {
 		}
 	}
 
-	.date-input .date-input--input, .select-input {
+	.date-input .date-input__input, .select-input {
 		display: block;
 
 		box-sizing: border-box;
