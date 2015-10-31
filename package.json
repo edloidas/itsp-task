@@ -46,8 +46,8 @@
 		"normalize.css": "*"
 	},
 	"devDependencies": {
-		"babel": "*",
-		"babel-core": "*",
+		"babel": "5.8.29",
+		"babel-core": "5.8.29",
 		"gulp": "*",
 		"gulp-babel": "*",
 		"gulp-util": "*",
