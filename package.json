@@ -46,8 +46,11 @@
 		"normalize.css": "*"
 	},
 	"devDependencies": {
-		"babel": "5.8.29",
-		"babel-core": "5.8.29",
+		"babel": "*",
+		"babel-core": "*",
+		"babel-preset-es2015": "*",
+		"babel-preset-react": "*",
+		"babel-preset-stage-0": "*",
 		"gulp": "*",
 		"gulp-babel": "*",
 		"gulp-util": "*",
