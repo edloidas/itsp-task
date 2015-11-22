@@ -1,7 +1,7 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import AppActions from '../actions/AppActions';
 
-class FloatingActiveButton extends React.Component {
+class FloatingActiveButton extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		id: PropTypes.string,

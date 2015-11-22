@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class DateInput extends React.Component {
+class DateInput extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		labelClassName: PropTypes.string,

@@ -2,9 +2,13 @@
 
 language: node_js
 env: TRAVIS_CI=true
-# whitelist
-branches:
-	only:
-		- master
+
+#branches:
+#  except:
+#    - gh-pages
+
 node_js:
-	- "4"
+  - "stable"
+
+script:
+  - istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage

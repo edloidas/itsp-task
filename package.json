@@ -46,11 +46,12 @@
 		"normalize.css": "*"
 	},
 	"devDependencies": {
-		"babel": "*",
 		"babel-core": "*",
-		"babel-preset-es2015": "*",
 		"babel-preset-react": "*",
 		"babel-preset-stage-0": "*",
+		"babel-preset-es2015": "*",
+    "babel-plugin-syntax-class-properties": "*",
+    "babel-plugin-transform-class-properties": "*",
 		"gulp": "*",
 		"gulp-babel": "*",
 		"gulp-util": "*",
@@ -94,7 +95,6 @@
 	},
 	"engines": {
 		"node": ">= 4.1.1",
-		"iojs": ">= 3.0.0",
 		"npm": ">= 2.14.4"
 	}
 }

@@ -1,8 +1,8 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import ReactDOM from 'react-dom';
 import Chart from 'chart.js';
 
-class Graph extends React.Component {
+class Graph extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		id: PropTypes.string,

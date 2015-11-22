@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CurrencyStore from '../stores/CurrencyStore';
 import Graph from './Graph.react';
 import DateInput from './DateInput.react';
@@ -13,7 +13,7 @@ function getCurrencyState() {
 	return CurrencyStore.getCurrency();
 }
 
-class CurrencyApp extends React.Component {
+class CurrencyApp extends Component {
 	constructor( props ) {
 		super( props );
 		this._onChange = this._onChange.bind(this);

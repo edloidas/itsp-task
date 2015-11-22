@@ -1,6 +1,6 @@
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 
-class SelectInput extends React.Component {
+class SelectInput extends Component {
 	static propTypes = {
 		className: PropTypes.string,
 		id: PropTypes.string,
